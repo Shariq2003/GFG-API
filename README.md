@@ -1,6 +1,6 @@
 # GFG Public API
 
-GFG Public API API is a Node.js application that fetches user data from GeeksforGeeks (GFG) using Puppeteer. This API allows you to retrieve details like user profile, rank, coding scores, solved problems, and more.
+GFG Public API is a Node.js application that fetches user data from GeeksforGeeks (GFG) using Puppeteer. This API allows you to retrieve details like user profile, rank, coding scores, solved problems, and more.
 
 ## Features
 
