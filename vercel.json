@@ -11,5 +11,15 @@
             "src": "/(.*)",
             "dest": "index.js"
         }
-    ]
+    ],
+    "env": {
+        "PUPPETEER_SKIP_DOWNLOAD": "true",
+        "PUPPETEER_EXECUTABLE_PATH": "./node_modules/puppeteer/.local-chromium/linux-722234/chrome-linux/chrome"
+    },
+    "build": {
+        "env": {
+            "PUPPETEER_SKIP_DOWNLOAD": "true",
+            "PUPPETEER_EXECUTABLE_PATH": "./node_modules/puppeteer/.local-chromium/linux-722234/chrome-linux/chrome"
+        }
+    }
 }
