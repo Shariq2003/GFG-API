@@ -1,6 +1,7 @@
 # GFG Public API
 
 GFG Public API is a Node.js application that fetches user data from GeeksforGeeks (GFG) using Puppeteer. This API allows you to retrieve details like user profile, rank, coding scores, solved problems, and more.
+Deployment : https://gfg-api-tzvp.onrender.com/
 
 ## Features
 
@@ -56,5 +57,3 @@ GFG Public API is a Node.js application that fetches user data from GeeksforGeek
     ```
 
 4. Open your browser and navigate to `http://localhost:3000/<username>` to fetch the data for a specific GFG user.
-
-Deployment : https://gfg-api-tzvp.onrender.com/
