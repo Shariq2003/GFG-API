@@ -19,6 +19,8 @@ async function userData(userName){
     }
 
     const getUserData = await page.evaluate(() => {
+        const API_auther =
+            "Shariq https://www.linkedin.com/in/shariq-sd/";
         const name = document.querySelector('.profilePicSection_head_userHandleAndFollowBtnContainer_userHandle__p7sDO').textContent;
         const rank = document.querySelector('.profilePicSection_head_userRankContainer_rank__abngM').firstChild.textContent;
         const institute = document.querySelector('.educationDetails_head_left--text__tgi9I').textContent;
@@ -29,23 +31,52 @@ async function userData(userName){
         const languages = document.querySelector('.educationDetails_head_right--text__lLOHI').textContent;
 
         const problems = document.querySelector('.problemListSection_head__JAiP6');
+        let All_solved_problems = [];
+        // const school = [];
+        // const basic = [];
+        // const easy = [];
+        // const medium = [];
+        // const hard = [];
 
-        const school = Array.from(problems.childNodes[3].childNodes[0].childNodes).map((li) => {
-            return li.childNodes[0].innerText;
-        })
-        const basic = Array.from(problems.childNodes[2].childNodes[0].childNodes).map((li) => {
-            return li.childNodes[0].innerText;
-        })
-        const easy = Array.from(problems.childNodes[1].childNodes[0].childNodes).map((li) => {
-            return li.childNodes[0].innerText;
-        })
-        const medium = Array.from(problems.childNodes[0].childNodes[0].childNodes).map((li)=>{
-            return li.childNodes[0].innerText;
-        })
-        const hard = Array.from(problems.childNodes[4].childNodes[0].childNodes).map((li) => {
-            return li.childNodes[0].innerText;
-        })
+        // let school_Count = parseInt(document.querySelector('.problemNavbar_head__cKSRi').childNodes[0].firstChild.textContent[8]);
+        // let basic_Count = parseInt(document.querySelector('.problemNavbar_head__cKSRi').childNodes[1].firstChild.textContent[7]);
+        // let easy_Count = parseInt(document.querySelector('.problemNavbar_head__cKSRi').childNodes[2].firstChild.textContent[6]);
+        // let medium_Count = parseInt(document.querySelector('.problemNavbar_head__cKSRi').childNodes[3].firstChild.textContent[8]);
+        // let hard_Count = parseInt(document.querySelector('.problemNavbar_head__cKSRi').childNodes[4].firstChild.textContent[6]);
+
+        // if (problems.childNodes[4] != undefined){
+        //     school = Array.from(problems.childNodes[4].childNodes[0].childNodes).map((li) => {
+        //         return li.childNodes[0].innerText;
+        //     })
+        // }
+        // if (problems.childNodes[3] != undefined) {
+        //     basic = Array.from(problems.childNodes[3].childNodes[0].childNodes).map((li) => {
+        //         return li.childNodes[0].innerText;
+        //     })
+        // } 
+        // if (problems.childNodes[0] != undefined) {
+        //     easy = Array.from(problems.childNodes[0].childNodes[0].childNodes).map((li) => {
+        //         return li.childNodes[0].innerText;
+        //     })
+        // }
+        // if (problems.childNodes[1] != undefined) {
+        //     medium = Array.from(problems.childNodes[1].childNodes[0].childNodes).map((li) => {
+        //         return li.childNodes[0].innerText;
+        //     })
+        // }
+
+        // if (problems.childNodes[2] != undefined) {
+        //     hard = Array.from(problems.childNodes[2].childNodes[0].childNodes).map((li) => {
+        //         return li.childNodes[0].innerText;
+        //     })
+        // }
+        for(let i=0;i<problems.childNodes.length;i++){
+            All_solved_problems = All_solved_problems.concat(Array.from(problems.childNodes[i].childNodes[0].childNodes).map((li) => {
+                return li.childNodes[0].innerText;
+            }))
+        }
         return {
+            API_auther,
             name,
             rank,
             institute,
@@ -54,11 +85,12 @@ async function userData(userName){
             monthly_coding_score,
             current_streak,
             languages,
-            school,
-            basic,
-            easy,
-            medium,
-            hard
+            // school,
+            // basic,
+            // easy,
+            // medium,
+            // hard
+            All_solved_problems
         };
     });
     await browser.close();
